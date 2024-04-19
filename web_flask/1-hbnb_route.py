@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 ''' This starts flask web app'''
 
-from flask import Flask # importing from the flask mod
+from flask import Flask
 
 app = Flask("__name__")
 
