@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" Script that starts a Flask web application:
-Listens  on 0.0.0.0, port 5000
+""" Write a script that starts a Flask web application:
+Your web application must be listening on 0.0.0.0, port 5000
 """
 
 from flask import Flask
@@ -41,4 +41,4 @@ def isNumber(n):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=500
+    app.run(host="0.0.0.0", port=5000, debug=None)
