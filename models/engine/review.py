@@ -1,22 +1,31 @@
 #!/usr/bin/python3
-'''Updating review  module for the HBNB project from BaseModel and Base'''
+""" holds class Review"""
+import models
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Text, ForeignKey
-from sqlalchemy.orm import relationship
 from os import getenv
-
-storage_type = getenv("HBNB_TYPE_STORAGE")
+import sqlalchemy
+from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
+from sqlalchemy import ForeignKey
 
 
 class Review(BaseModel, Base):
-    ''' Review classto store review information'''
-    __tablename__ = 'reviews'
-
-    if storage_type == "db":
-        place_id = Column(String(60), ForeignKey("places.id"), nullable=False)
-        user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
-        text = Column(Text(1024), nullable=False)
+    """Representation of Review """
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
+        __tablename__ = 'reviews'
+        text = Column(String(1024),
+                      nullable=False)
+        place_id = Column(String(60),
+                          ForeignKey('places.id'),
+                          nullable=False)
+        user_id = Column(String(60),
+                         ForeignKey('users.id'),
+                         nullable=False)
     else:
+        text = ""
         place_id = ""
         user_id = ""
-        text = ""
+
+    def __init__(self, *args, **kwargs):
+        """initializes Review"""
+        super().__init__(*args, **kwarg
